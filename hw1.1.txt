@@ -1,0 +1,1 @@
+SELECT uniquecarrier, count(*) as amount FROM HW1.flights GROUP BY uniquecarrier;

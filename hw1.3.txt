@@ -1,0 +1,1 @@
+SELECT city, count(*) as total FROM flights JOIN airports ON flights.origin = airports.iata WHERE month >= 6 AND month <= 8 GROUP BY city DISTRIBUTE BY total SORT BY total DESC LIMIT 5;

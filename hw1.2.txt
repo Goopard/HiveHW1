@@ -1,0 +1,1 @@
+SELECT count(*) FROM flights JOIN airports ON flights.origin = airports.iata WHERE airports.city = "New York" AND flights.month = 6;

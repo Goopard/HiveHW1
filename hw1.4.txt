@@ -1,0 +1,1 @@
+SELECT name, count(*) AS total FROM flights JOIN carriers ON flights.uniquecarrier = carriers.uniquecarrier GROUP BY name DISTRIBUTE BY total SORT BY total DESC LIMIT 1;
