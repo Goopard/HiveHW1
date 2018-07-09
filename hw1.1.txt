@@ -1,0 +1,1 @@
+SELECT uniquecarrier, count(*) as total FROM HW1.flights GROUP BY uniquecarrier DISTRIBUTE BY total SORT BY total DESC;

@@ -1,0 +1,13 @@
+CREATE VIEW IF NOT EXISTS out_flights AS
+SELECT airport, count(*) as total FROM airports 
+JOIN flights ON flights.origin = airports.iata
+WHERE month >= 6 AND month <= 8 GROUP BY airport;
+
+CREATE VIEW IF NOT EXISTS in_flights AS
+SELECT airport, count(*) as total FROM airports 
+JOIN flights ON flights.dest = airports.iata
+WHERE month >= 6 AND month <= 8 GROUP BY airport;
+
+SELECT out_flights.airport, out_flights.total + in_flights.total AS total FROM out_flights 
+JOIN in_flights ON out_flights.airport = in_flights.airport
+DISTRIBUTE BY total SORT BY total DESC LIMIT 5;
